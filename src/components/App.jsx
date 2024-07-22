@@ -9,6 +9,7 @@ export const App = () => {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
+  //save contacts to local storage with useEffect
   useEffect(() => {
     const storedContacts = localStorage.getItem('contacts');
     if (storedContacts) {
