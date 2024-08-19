@@ -1,11 +1,6 @@
-import { createSlice, createAction } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact, setFilter } from './actions';
 import PropTypes from 'prop-types';
-
-export const loadContacts = createAction('contacts/load');
-export const addContact = createAction('contacts/add');
-export const deleteContact = createAction('contacts/delete');
-export const setFilter = createAction('filter/set');
 
 const contactsSlice = createSlice({
   name: 'phonebook',
@@ -13,22 +8,16 @@ const contactsSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(loadContacts, state => {
-        const storedContacts = localStorage.getItem('contacts');
-        if (storedContacts) {
-          state.contacts = JSON.parse(storedContacts);
-        }
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.contacts = action.payload;
       })
-      .addCase(addContact, (state, action) => {
-        const contactWithId = { ...action.payload, id: nanoid() };
-        state.contacts.push(contactWithId);
-        localStorage.setItem('contacts', JSON.stringify(state.contacts));
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.contacts.push(action.payload);
       })
-      .addCase(deleteContact, (state, action) => {
+      .addCase(deleteContact.fulfilled, (state, action) => {
         state.contacts = state.contacts.filter(
           contact => contact.id !== action.payload
         );
-        localStorage.setItem('contacts', JSON.stringify(state.contacts));
       })
       .addCase(setFilter, (state, action) => {
         state.filter = action.payload;
@@ -39,6 +28,7 @@ const contactsSlice = createSlice({
 export default contactsSlice.reducer;
 
 contactsSlice.propTypes = {
+  filter: PropTypes.string.isRequired,
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -46,5 +36,4 @@ contactsSlice.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  filter: PropTypes.string.isRequired,
 };
