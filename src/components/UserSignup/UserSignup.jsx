@@ -12,6 +12,8 @@ export default function UserSignup() {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(register({ name, email, password }));
+    
+    // window.location.href="/goit-react-hw-08-phonebook/contacts";
   };
 
   return (

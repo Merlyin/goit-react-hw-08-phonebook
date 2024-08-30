@@ -75,11 +75,11 @@ export const register = createAsyncThunk(
         headers: { 'Content-Type': 'application/json' },
         
       });
-      console.log(response.data.token);
+      alert("New Account Created Successfully! Click on Login to sign-in.");
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      console.log("hi");
+      alert("Account Creation Error.");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
