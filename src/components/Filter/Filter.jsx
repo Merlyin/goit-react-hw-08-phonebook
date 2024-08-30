@@ -12,7 +12,7 @@ export const Filter = () => {
   };
 
   return (
-    <div>
+    <div className="padding">
       <input
         type="text"
         name="filter"

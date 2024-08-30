@@ -10,6 +10,7 @@ import {
   deleteContact,
   setFilter,
 } from '../../redux/actions';
+import css from './Contacts.module.css';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -33,14 +34,16 @@ export default function Contacts() {
   };
 
   return (
-    <div>
-      <UserMenu />
-      <h1>Phonebook</h1>
+    <div className='container'>
+      <div className={css.fillIn}>
+      <UserMenu/>
+      <h1><span className={css.title}>Phonebook</span></h1>
       <ContactForm contacts={contacts} onAddContact={handleAddContact} />
-      <h2>Contacts</h2>
-      <h5>Find contacts by name</h5>
+      <h2 className={css.moreText}>Contacts</h2>
+      <h5 className={css.moreText}>Find contacts by name</h5>
       <Filter filter={filter} onFilterChange={handleFilterChange} />
       <ContactList onDeleteContact={handleDeleteContact} />
+      </div>
     </div>
   );
 }

@@ -7,11 +7,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(36, 33, 56);
 }
 
 .container {
-  padding-left: 40px;
+  position: relative;
+  max-width: 1158px;
+  margin: 0 auto;
+  /* padding: 0 15px; */
 }
+
+.padding {
+  padding-left: 50px;
+}
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/actions';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../auth/useAuth';
+import css from './UserLogin.module.css';
 
 export default function UserLogin() {
   const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ export default function UserLogin() {
     if (isLoggedIn) {
       navigate('/contacts');
     } else {
-      navigate('/login');
+      // navigate('/login');
     }
   }, [isLoggedIn, navigate]);
 
@@ -29,27 +30,39 @@ export default function UserLogin() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
+    <div className="container">
+      <div className={css.fillIn}></div>
+      <nav className={css.navigationMenu}>
+        <Link className={css.button} role="button" as={Link} to="/"><span className={css.text}>Home</span></Link>
+        <Link className={css.button} role="button" as={Link} to="/Register"><span className={css.text}>Register</span></Link>
+      </nav>
+      <div className={css.mainBody}>
+        <h1><span className={css.title}>Login</span></h1>
+        <form className={css.form} onSubmit={handleSubmit}>
+          <label>
+            Email
+            
+          </label>
           <input
-            type="email"
-            value={email}
-            onChange={event => setEmail(event.target.value)}
-          />
-        </label>
-        <label>
-          Password
+              type="email"
+              value={email}
+              onChange={event => setEmail(event.target.value)}
+            />
+          <label>
+            Password
+            
+          </label>
           <input
-            type="password"
-            value={password}
-            onChange={event => setPassword(event.target.value)}
-          />
-        </label>
-        <button type="submit">Login</button>
-      </form>
+              type="password"
+              value={password}
+              onChange={event => setPassword(event.target.value)}
+            />
+            
+
+
+          <button className={css.button2} type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 }

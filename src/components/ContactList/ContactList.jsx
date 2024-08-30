@@ -12,13 +12,14 @@ export const ContactList = ({ onDeleteContact }) => {
   );
 
   return (
-    <div>
-      <ul>
+    <div >
+      <ul className={css.padding}>
         {filteredContacts.map(contact => (
           <li key={contact.id}>
             {contact.name}: {contact.number}
             <button
               className={css.button__list}
+              
               onClick={() => onDeleteContact(contact.id)}
             >
               Delete

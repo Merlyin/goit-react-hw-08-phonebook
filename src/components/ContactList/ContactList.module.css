@@ -1,7 +1,24 @@
 .button__list {
-  margin-top: 10px;
+  /* margin-top: 10px;
   width: 50px;
   border-radius: 5px;
-  background-color: white;
-  margin-left: 10px;
+  background-color: white; */
+  margin-left: 10px; 
+  align-items: center;
+  background-color: rgb(5, 6, 45);
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  color: #FFFFFF;
+  font-size: 15px;
+  min-width: 90px;
+  padding: 5px 7px;
+  cursor: pointer;
+}
+
+.padding {
+  padding-left: 50px;
+}
+
+ul {
+  list-style: none;
 }

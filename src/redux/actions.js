@@ -85,12 +85,6 @@ export const register = createAsyncThunk(
   }
 );
 
-// export const register = async credentials => {
-//   const { data } = await instance.post('/users/signup', credentials);
-//   setAuthHeader(data.token);
-//   return data;
-// };
-
 export const login = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {

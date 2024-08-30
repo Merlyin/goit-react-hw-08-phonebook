@@ -1,4 +1,4 @@
-import { Navigation } from './Navigation';
+import { Navigation } from './Navigation/Navigation';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
